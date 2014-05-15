@@ -1,0 +1,39 @@
+[
+	{
+		"key":"clients",
+		"value":"Clients"
+	},
+	{
+		"key":"intro",
+		"value":"Introduction to Internationalization"
+	},
+	{
+		"key":"bodyText",
+		"value":"This is a demonstration of how to manage structured Internationalization requirements. Rather than a flat array, which this also supports, the il8nObj module provides object-based mechanism to structure localized content."
+	},
+	{
+	"key":"client0",
+	"value":{
+			"Client":"ACME Mousetrap",
+			"ClientDesc":"Builder of better mousetraps",
+			"ClientProducts":{
+				"ProductName":"Singleton w/kids",
+				"ProductDescription":{
+					"WarningLabel":"No subbed arrays yet"
+				}
+			}
+		}
+	},{
+	"key":"client1",
+	"value":{
+			"Client":"Johnny Walker",
+			"ClientDesc":"Johnny Walker is delicious.",
+			"ClientProducts":{
+				"ProductName":"Only one Label",
+				"ProductDescription":{
+					"WarningLabel":"More labels needed"
+				}
+			}
+		}
+	}
+]
