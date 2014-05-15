@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>il8nObj : Angular Internationalization Filter</title>
+    <style type="text/css">
+    	#theContent{
+    		background-color: #ffc;
+    		margin: 0px;
+    		padding: 5px;
+    	}
+    	#theExplanation{
+    		background-color: #ccf;
+    		margin: 0px;
+    		padding: 5px;
+    	}
+    	#theCode{
+    		background-color: #fcc;
+    		margin: 0px;
+    		padding: 5px;
+    	}
+    </style>
+  </head>
+  <body ng-app="il8nObj">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
+    <script src="il8nObj.js"></script>
+	<div id="theContent">
+		<h1>{{'locale_example' | il8nObj:'intro'}}</h1>
+		<p>{{'locale_example' | il8nObj:'bodyText'}}</p>
+		<h2>{{'locale_example' | il8nObj:'clients'}}</h2>
+		<h3>{{'locale_example' | il8nObj:'client0':'Client'}}</h3>
+		<p>{{'locale_example' | il8nObj:'client0':'ClientProducts':'ProductName'}}</p>
+		<h3>{{'locale_example' | il8nObj:'client1':'Client'}}</h3>
+		<p>{{'locale_example' | il8nObj:'client1':'ClientProducts':'ProductName'}}</p>
+	</div>
+	<div id="theExplanation">
+
+	<p>
+		The text above comes from the file <a href="il8nObj.js">il8nObj.js</a>. The structure for drilling down into the Object is:
+	</p>
+
+<p>
+	<pre  class="ng-non-bindable">     {{'filePrefix' | il8nObj:'keyValue':'property':'subproperty':'subsubproperty'}} </pre>
+</p>
+<p>
+So, the top example above is:
+</p>
+
+<pre  class="ng-non-bindable">     {{'locale_example' | il8nObj:'intro'}} </pre>
+<p>
+This refers to "Introduction to Internationalization" from returning the value from the clients key in the file at <a href="locale_example_en.json">locale_example_en.json</a>. The fifth example drills down into the client0 value to its ClientProducts.ProductName property.:
+</p>
+<pre  class="ng-non-bindable">     {{'locale_example' | il8nObj:'client0':'ClientProducts':'ProductName'}}
+
+</pre>
+<p>
+I built this filter, because I wanted to map a simple hierarchy to a number of languages. There was no exisitng filter that I could find to achieve a structured mapping, so this is what I came up with. I hope this can help someone out of a similar situation.
+</p>
+
+	</div>
+
+	<div id="theCode">
+
+<pre>
+[
+	{
+		"key":"clients",
+		"value":"Clients"
+	},
+	{
+		"key":"intro",
+		"value":"Introduction to Internationalization"
+	},
+	{
+		"key":"bodyText",
+		"value":"This is a demonstration of how to manage structured Internationalization requirements. Rather than a flat array, which this also supports, the il8nObj module provides object-based mechanism to structure localized content."
+	},
+	{
+	"key":"client0",
+	"value":{
+			"Client":"ACME Mousetrap",
+			"ClientDesc":"Builder of better mousetraps",
+			"ClientProducts":{
+				"ProductName":"Singleton w/kids",
+				"ProductDescription":{
+					"WarningLabel":"No subbed arrays yet"
+				}
+			}
+		}
+	},{
+	"key":"client1",
+	"value":{
+			"Client":"Johnny Walker",
+			"ClientDesc":"Johnny Walker is delicious.",
+			"ClientProducts":{
+				"ProductName":"Only one Label",
+				"ProductDescription":{
+					"WarningLabel":"More labels needed"
+				}
+			}
+		}
+	}
+]
+
+</pre>
+</div>
+</body>
+</html>
